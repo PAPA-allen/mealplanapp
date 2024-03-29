@@ -7,7 +7,7 @@ import {
   TextInput,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
-import {useRoute} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import axios from 'axios';
 
 const MenuScreen = () => {
@@ -17,6 +17,8 @@ const MenuScreen = () => {
   const [type, setType] = useState('');
   const [menuItems, setMenuItems] = useState([]);
 
+
+  const navigation = useNavigation();
   useEffect(() => {
     if (route?.params?.items) {
       setMenuItems(route?.params?.items);
@@ -52,7 +54,7 @@ const MenuScreen = () => {
           padding: 10,
           backgroundColor: '#4B9CD3',
         }}>
-        <Text style={{flex: 1, color: 'white'}}>Back</Text>
+        <TouchableOpacity onPress={()=>navigation.goBack()} style={{flex: 1,}}><Text style={{ color: 'white'}}>Back</Text></TouchableOpacity>
 
         <View style={{flex: 1}}>
           <Text style={{color: 'white', fontSize: 16, fontWeight: 'bold'}}>
@@ -60,7 +62,7 @@ const MenuScreen = () => {
           </Text>
         </View>
 
-        <Text style={{color: 'white'}}>Delete</Text>
+        <TouchableOpacity><Text style={{ color: 'white'}}>Delete</Text></TouchableOpacity>
       </View>
 
       <View
@@ -143,16 +145,8 @@ const MenuScreen = () => {
             alignItems: 'center',
           },
         ]}>
-        <Text
-          style={{
-            textAlign: 'center',
-            fontSize: 12,
-            fontWeight: '600',
-            color: 'gray',
-          }}>
-          There is no menu
-        </Text>
-        {menuItems && (
+       
+        {menuItems.length > 0 ? (
           <View>
             {/* Render Breakfast section if there are items */}
             {menuItems.some(item => item.mealType === 'Breakfast') && (
@@ -317,7 +311,16 @@ const MenuScreen = () => {
               </View>
             )}
           </View>
-        )}
+        ):(
+          <Text
+            style={{
+              textAlign: 'center',
+              fontSize: 12,
+              fontWeight: '600',
+              color: 'gray',
+            }}>
+            There is no menu
+          </Text>)}
       </TouchableOpacity>
 
       <View
