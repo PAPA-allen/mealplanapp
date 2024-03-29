@@ -86,7 +86,7 @@ app.delete('/deleteItems/:date', async (req, res) => {
   const dateToDelete = req.params.date;
 
   try {
-    const deletedItem = await Menu.deleteOne({date: dateToDelete});
+    const deletedItem = await Menu.findOneAndDelete({date: dateToDelete});
     if (deletedItem) {
       res.status(200).json({message: 'Item deleted'});
     } else {

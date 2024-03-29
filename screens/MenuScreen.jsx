@@ -35,7 +35,7 @@ const MenuScreen = () => {
     };
 
     const response = await axios.post(
-      'http://localhost:3000/menu/addDish',
+      'http://localhost:8000/menu/addDish',
       dish,
     );
     console.log('dish added', response);
@@ -229,6 +229,7 @@ const MenuScreen = () => {
                   .filter(item => item.mealType === 'Lunch')
                   .map((item, index) => (
                     <View
+                    key={item.date + index} 
                       style={{
                         flexDirection: 'row',
                         alignItems: 'center',

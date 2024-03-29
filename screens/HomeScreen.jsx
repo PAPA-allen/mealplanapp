@@ -232,7 +232,7 @@ const HomeScreen = () => {
                       <View>
                         <View
                           style={{
-                            backgroundColor: '#4B9CD3',
+                            backgroundColor: '#7CB9E8',
                             paddingHorizontal: 12,
                             paddingVertical: 3,
                             marginVertical: 5,
@@ -289,7 +289,7 @@ const HomeScreen = () => {
                       <View>
                         <View
                           style={{
-                            backgroundColor: '#4B9CD3',
+                            backgroundColor: '#7CB9E8',
                             paddingHorizontal: 12,
                             paddingVertical: 3,
                             marginVertical: 5,
@@ -352,7 +352,7 @@ const HomeScreen = () => {
             <Pressable
               onPress={() => deleteItems(date)}
               style={{position: 'absolute', bottom: 5, right: 5}}>
-              <Text style={{fontSize: 10, fontWeight: '500', color: 'gray'}}>
+              <Text style={{fontSize: 10, fontWeight: '500', color: 'red'}}>
                 delete
               </Text>
             </Pressable>
