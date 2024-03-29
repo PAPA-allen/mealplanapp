@@ -24,6 +24,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import StackNavigator from './navigation/StackNavigator';
+import { ModalPortal } from 'react-native-modals';
 
 function Section({children, title}) {
   const isDarkMode = useColorScheme() === 'dark';
@@ -61,6 +62,7 @@ function App() {
   return (
   <>
   <StackNavigator/>
+  <ModalPortal/>
   </>
   );
 }
