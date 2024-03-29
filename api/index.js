@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
 
+
 const app = express();
 
 const port = process.env.PORT;
@@ -85,7 +86,7 @@ app.delete('/deleteItems/:date', async (req, res) => {
   const dateToDelete = req.params.date;
 
   try {
-    const deletedItem = await Menu.findOneAndDelete({date: dateToDelete});
+    const deletedItem = await Menu.deleteOne({date: dateToDelete});
     if (deletedItem) {
       res.status(200).json({message: 'Item deleted'});
     } else {
